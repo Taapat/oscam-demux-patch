@@ -1,5 +1,5 @@
---- a/globals.h	2017-07-09 13:01:26.569374183 +0300
-+++ b/globals.h	2017-07-09 13:03:03.152683768 +0300
+--- a/globals.h	2018-11-18 14:28:44.000000000 +0200
++++ b/globals.h	2018-11-18 14:54:58.682927403 +0200
 @@ -1007,6 +1007,7 @@
  	uchar           cw[16];
  	EXTENDED_CW     cw_ex;
@@ -16,8 +16,8 @@
  	int8_t          dropbadcws;                     // Schlocke: 1=drops cw if checksum is wrong. 0=fix checksum (default)
  	int8_t          disablecrccws;                  // 1=disable cw checksum test. 0=enable checksum check
  	uint64_t        grp;
---- a/module-dvbapi.c	2017-07-09 13:05:53.003429230 +0300
-+++ b/module-dvbapi.c	2017-07-09 13:10:00.283636352 +0300
+--- a/module-dvbapi.c	2018-11-18 14:28:44.000000000 +0200
++++ b/module-dvbapi.c	2018-11-18 15:00:54.040934556 +0200
 @@ -2069,6 +2069,7 @@
  			}
  		}
@@ -58,7 +58,7 @@
  			er->caid = er->ocaid = demux[demux_index].ECMpids[n].CAID;
  			er->prid = demux[demux_index].ECMpids[n].PROVID;
  			er->pid = demux[demux_index].ECMpids[n].ECM_PID;
-@@ -4408,6 +4413,7 @@
+@@ -4410,6 +4415,7 @@
  					return;
  				}
  
@@ -66,7 +66,7 @@
  				er->srvid = demux[demux_id].program_number;
  
  #ifdef WITH_STAPI5
-@@ -4451,6 +4457,7 @@
+@@ -4453,6 +4459,7 @@
  			return;
  		}
  
@@ -74,8 +74,8 @@
  		er->srvid = demux[demux_id].program_number;
  
  #ifdef WITH_STAPI5
---- a/oscam-chk.c	2017-07-09 13:01:26.573374155 +0300
-+++ b/oscam-chk.c	2017-07-09 13:12:37.125061259 +0300
+--- a/oscam-chk.c	2018-11-18 14:28:45.000000000 +0200
++++ b/oscam-chk.c	2018-11-18 15:03:34.244012982 +0200
 @@ -733,6 +733,10 @@
  	if(!cl || !rdr->enable)
  		{ return (0); }
@@ -87,9 +87,9 @@
  	// if physical reader a card needs to be inserted
  	if(!is_network_reader(rdr) && rdr->card_status != CARD_INSERTED)
  		{ return (0); }
---- a/oscam-config-reader.c	2017-07-09 13:01:26.573374155 +0300
-+++ b/oscam-config-reader.c	2017-07-09 13:14:14.695607572 +0300
-@@ -813,6 +813,7 @@
+--- a/oscam-config-reader.c	2018-12-08 15:52:39.308840782 +0200
++++ b/oscam-config-reader.c	2018-12-08 16:01:00.638323080 +0200
+@@ -1069,6 +1069,7 @@
  	DEF_OPT_STR("description"           , OFS(description),             NULL),
  #endif
  	DEF_OPT_INT8("enable"               , OFS(enable),                  1),
